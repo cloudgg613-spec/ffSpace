@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx prisma *)",
+      "Bash(dir /S /B)",
+      "Bash(findstr /V \"node_modules\")",
+      "Bash(findstr /V \".next\")",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)",
+      "Bash(Remove-Item -Recurse -Force \"C:\\\\Users\\\\admin\\\\Desktop\\\\ffSpace\\\\.next\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\admin\\\\Desktop\\\\ffSpace\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(ConvertTo-Csv -NoTypeInformation)",
+      "Bash(npm run *)"
+    ]
+  }
+}

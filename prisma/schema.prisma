@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // Development: "sqlite" | Production: "postgresql"
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Article {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String
+  content     String
+  imageUrl    String?
+  source      String
+  league      String
+  publishedAt DateTime @default(now())
+  sourceUrl   String?  @unique
+  isManual    Boolean  @default(false)
+  isHidden    Boolean  @default(false)
+
+  @@index([publishedAt])
+  @@index([league])
+}
+
+model RssFeed {
+  id        String   @id @default(cuid())
+  name      String
+  url       String   @unique
+  league    String   @default("all")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}

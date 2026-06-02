@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1755c0;
+  --primary-dark: #1244a0;
+  --primary-light: #2d6fdf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Custom scrollbar for league filter */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
