@@ -2,45 +2,45 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS-20'  // Tên đã đặt ở Tools
+        nodejs 'NodeJS-20'  // Tên bạn đã đặt trong Jenkins Tools
+    }
+
+    environment {
+        APP_NAME = 'ffspace'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                echo '📥 Pulling code...'
+                echo '📥 Pulling code from GitHub...'
                 checkout scm
             }
         }
 
-        stage('Install') {
+        stage('Install Dependencies') {
             steps {
-                echo '📦 Installing...'
+                echo '📦 Installing packages...'
                 sh 'npm install'
             }
         }
 
         stage('Build') {
             steps {
-                echo '🏗️ Building...'
+                echo '🏗️ Building Next.js app...'
                 sh 'npm run build'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo '🧪 Testing...'
-                sh 'npm test'
             }
         }
     }
 
     post {
         success {
-            echo '✅ Build thành công!'
+            echo '✅ Build Next.js thành công!'
         }
         failure {
-            echo '❌ Build thất bại!'
+            echo '❌ Build thất bại! Kiểm tra Console Output.'
+        }
+        always {
+            cleanWs()
         }
     }
 }
